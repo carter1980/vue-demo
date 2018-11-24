@@ -6,6 +6,8 @@
     <script src="https://cdn.staticfile.org/vue/2.4.2/vue.min.js"></script>
 </head>
 <body>
+  <div id="app0">
+  </div>
     <div id="app">
     <p>{{ message }}</p>
     </div>
@@ -31,7 +33,18 @@
   <button v-on:click="reverseMessage">逆转消息</button>
 </div>
 
+<div id="app-6">
+  <p>{{ message }}</p>
+  <input v-model="message">
+</div>
+
+
     <script>
+    app0 = new Vue({
+      el: '#app0',
+       template: '<p> 12345 </p>'
+    })
+
         app = new Vue({
         el: '#app',
         data: {
@@ -71,6 +84,13 @@ var app5 = new Vue({
     reverseMessage: function () {
       this.message = this.message.split('').reverse().join('')
     }
+  }
+})
+
+var app6 = new Vue({
+  el: '#app-6',
+  data: {
+    message: 'Hello Vue!'
   }
 })
 

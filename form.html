@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <style type="text/css">
+        body {background-color:yellow;}
+        #msg {color:red;}
+     </style>
+</head>
+<body>
+    <form action="" onsubmit="return check()">
+        用户名：<input type="text" id='username'><br>
+        密码：<input type="text" id='password'><br>
+        <input type="submit" value='提交' id='submit'>
+    </form>
+
+    <form action="#">
+        <input id="txt_submit" type="text" name="test" placeholder="请输入6~10个字符的中文">
+        <span id="msg" style="color: red; "></span>
+        <button id="btn_submit" type="submit">提交</button>
+    </form>
+
+<script>
+    // HTML DOM加载完成后执行JS代码
+    $(function() {
+        $("#txt_submit").focus()
+        console.log("-----------------------")
+    });
+
+    function check(){
+        if($('#username').val()==''){
+            alert('名字不能为空');
+            return false
+        }else if($('#password').val()==''){
+            $('#username').val("")
+            alert('密码不能为空');
+            return false
+        }else{
+            return true;
+        }
+    }
+
+    $("#btn_submit").click(function() {
+        var strText = $("#txt_submit").val();
+
+        // 必填项验证
+        if ("" == strText) {
+          $("#msg").html("该输入项不能为空");
+          return false;
+        }
+
+        // 最小长度验证
+        if (strText.length < 6) {
+          $("#msg").html("输入长度不能小于6");
+          $("#msg").focus()
+          return false;
+        }
+
+        // 最大长度验证
+        if (strText.length > 10) {
+          $("#msg").html("输入长度不能大于10");
+          return false;
+        }
+
+        // 汉字验证
+        if (!/^[\u4e00-\u9fa5]+$/.test(strText)) {
+          $("#msg").html("必须输入汉字");
+          return false;
+        }
+
+        // 错误信息清空
+        $("#msg").html("");
+        return true;
+    });
+</script>
+</body>
+</html>
