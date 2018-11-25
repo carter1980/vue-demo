@@ -17,3 +17,6 @@ cd projectName
 npm install && npm run dev
 //打包
 npm run build
+
+## iview project
+https://github.com/iview/iview-project
